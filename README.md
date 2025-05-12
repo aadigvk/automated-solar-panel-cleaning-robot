@@ -27,7 +27,7 @@
 - **Metal Chassis**
 - **Wheels and Mounting Hardware**
 - **Water Pump or Cleaning Actuator**
-- **Li-ion Battery (12V)**
+- **Li-ion Battery (7.4V)**
 - **LEDs, Buzzer, Connectors, etc.**
 
 ---
@@ -53,7 +53,7 @@ solar-panel-cleaning-robot/
 
 ### 1. **Clone the Repository**
 ```bash
-git clone https://github.com/yourusername/solar-panel-cleaning-robot.git
+git clone https://github.com/aadigvk/automated-solar-panel-cleaning-robot.git
 ```
 
 ### 2. **Hardware Setup**
@@ -66,7 +66,7 @@ git clone https://github.com/yourusername/solar-panel-cleaning-robot.git
 - Upload the code from the `code/` directory.
 
 ### 4. **Power Up**
-- Connect the 12V battery.
+- Connect the 7.4V battery.
 - The robot will start moving, detect obstacles, and activate the cleaning mechanism automatically.
 
 ---
