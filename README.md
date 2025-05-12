@@ -32,23 +32,6 @@
 
 ---
 
-## Circuit Diagram
-
-![Circuit Diagram](schematics/circuit_dier Structure
-
-```
-solar-panel-cleaning-robot/
-├── code/                # Source code (.ino, .cpp, etc.)
-├── schematics/          # Circuit diagrams and PCB layouts
-├── hardware/            # Chassis and mechanical designs
-├── images/              # Photos and demo images
-├── docs/                # Reports and documentation    
-├── README.md
-├── LICENSE
-```
-
----
-
 ## Getting Started
 
 ### 1. **Clone the Repository**
