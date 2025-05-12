@@ -1,0 +1,98 @@
+// Pin Definitions
+#define BUZZER_PIN 25
+#define RELAY_PIN  14
+
+#define MOTOR_IN1  23
+#define MOTOR_IN2  26
+#define MOTOR_IN3  5
+#define MOTOR_IN4 19
+#define TRIG_PIN   17
+#define ECHO_PIN   16
+
+void setup() {
+  // Setup Pins
+  pinMode(RELAY_PIN, OUTPUT);
+  pinMode(BUZZER_PIN, OUTPUT);
+  pinMode(MOTOR_IN1, OUTPUT);
+  pinMode(MOTOR_IN2, OUTPUT);
+  pinMode(MOTOR_IN3, OUTPUT);
+  pinMode(MOTOR_IN4, OUTPUT);
+  pinMode(TRIG_PIN, OUTPUT);
+  pinMode(ECHO_PIN, INPUT);
+
+  // Initial States
+  digitalWrite(RELAY_PIN, LOW);
+  digitalWrite(BUZZER_PIN, LOW);
+  Serial.begin(9600);
+}
+
+// Motor Movement Functions
+void moveForward() {
+  digitalWrite(MOTOR_IN1, HIGH);
+  digitalWrite(MOTOR_IN2, LOW);
+  digitalWrite(MOTOR_IN3, HIGH);
+  digitalWrite(MOTOR_IN4, LOW);
+}
+
+void turnRight() {
+  digitalWrite(MOTOR_IN1, HIGH);
+  digitalWrite(MOTOR_IN2, LOW);
+  digitalWrite(MOTOR_IN3, LOW);
+  digitalWrite(MOTOR_IN4, HIGH);
+}
+
+void turnLeft() {
+  digitalWrite(MOTOR_IN1, LOW);
+  digitalWrite(MOTOR_IN2, HIGH);
+  digitalWrite(MOTOR_IN3, HIGH);
+  digitalWrite(MOTOR_IN4, LOW);
+}
+
+void stopMotors() {
+  digitalWrite(MOTOR_IN1, LOW);
+  digitalWrite(MOTOR_IN2, LOW);
+  digitalWrite(MOTOR_IN3, LOW);
+  digitalWrite(MOTOR_IN4, LOW);
+
+}
+
+// Get Distance from Ultrasonic Sensor
+long getDistanceCM() {
+  digitalWrite(TRIG_PIN, LOW);
+  delayMicroseconds(2);
+  digitalWrite(TRIG_PIN, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(TRIG_PIN, LOW);
+
+  long duration = pulseIn(ECHO_PIN, HIGH, 30000); // timeout after 30ms
+  long distance = duration * 0.034 / 2; // Convert to cm
+  return distance;
+}
+
+void loop() {
+  long distance = getDistanceCM();
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+    moveForward();
+    delay(1000);
+    stopMotors();
+    delay(3000);
+    digitalWrite(RELAY_PIN, HIGH);
+    delay(400);
+    digitalWrite(RELAY_PIN, LOW);
+    delay(3000);
+
+  if (distance < 20) {
+    // Safe to move
+    stopMotors();
+    delay(2000);
+    turnRight();
+    delay(2000);
+    stopMotors();
+    delay(2000);
+
+  }
+  // Pattern Movement (only if no obstacle)
+ 
+  delay(1000);
