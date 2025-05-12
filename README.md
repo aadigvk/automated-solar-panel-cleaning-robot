@@ -42,11 +42,9 @@ solar-panel-cleaning-robot/
 ├── schematics/          # Circuit diagrams and PCB layouts
 ├── hardware/            # Chassis and mechanical designs
 ├── images/              # Photos and demo images
-├── docs/                # Reports and documentation
-├── test/                # Test results and logs
+├── docs/                # Reports and documentation    
 ├── README.md
 ├── LICENSE
-└── .gitignore
 ```
 
 ---
